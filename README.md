@@ -1,6 +1,6 @@
 # 3D Model Fault Prediction Using Machine Learning by the Help of Coordinates
 
-![Project Banner](static/assets/homepage.PNG)
+![Project Banner](static/assets/home.PNG)
 ![Project Banner](static/assets/result.png)
 ## 📌 Project Overview
 
