@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | PRINT HACK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a0033; /* Dark purple background */
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal overflow from geometric shapes */
+        }
+
+        /* Geometric Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="0,0 50,100 100,0" fill="rgba(255, 0, 150, 0.1)"/></svg>');
+            background-size: 100px 100px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px); /* Subtle glass effect */
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff00ff; /* Neon pink */
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            color: #00ffff; /* Cyan */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #ff00ff; /* Neon pink on hover */
+            text-shadow: 0 0 15px #ff00ff;
+        }
+
+        .nav-links li a.active {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        /* Page Container */
+        .page-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .page-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: #ff00ff; /* Neon pink */
+            text-shadow: 0 0 10px #ff00ff;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #00ffff; /* Cyan */
+        }
+
+        /* Content Box (Contact Card & Project Info Card) */
+        .content-box {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(255, 0, 150, 0.3);
+            margin-bottom: 40px;
+            backdrop-filter: blur(5px);
+            border: 1px solid #ff00ff;
+        }
+
+        .content-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: #ff00ff; /* Neon pink */
+            text-shadow: 0 0 10px #ff00ff;
+            margin-bottom: 20px;
+        }
+
+        /* Team Member Grid */
+        .horizontal-team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .team-member-large {
+            flex: 1 1 45%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #00ffff;
+        }
+
+        .team-member-large:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .team-member-large h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            color: #ff00ff; /* Neon pink */
+            margin-bottom: 10px;
+        }
+
+        .team-member-large p {
+            font-size: 16px;
+            color: #00ffff; /* Cyan */
+            margin-bottom: 8px;
+        }
+
+        .contact-links {
+            margin-top: 15px;
+        }
+
+        .linkedin-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .linkedin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        /* Project Info Grid */
+        .horizontal-info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .info-item-large {
+            flex: 1 1 45%;
+            padding: 15px;
+        }
+
+        .info-item-large strong {
+            font-size: 18px;
+            color: #ff00ff; /* Neon pink */
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item-large p {
+            font-size: 16px;
+            color: #00ffff; /* Cyan */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .horizontal-team-grid {
+                flex-direction: column;
+            }
+
+            .team-member-large {
+                flex: 1 1 100%;
+            }
+
+            .horizontal-info-grid {
+                flex-direction: column;
+            }
+
+            .info-item-large {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-links li a {
+                font-size: 14px;
+            }
+
+            .page-header h1 {
+                font-size: 24px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .content-box h2 {
+                font-size: 24px;
+            }
+
+            .team-member-large h3 {
+                font-size: 20px;
+            }
+
+            .linkedin-btn {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="logo">PRINT HACK</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/project-details">About</a></li>
+            <li><a href="/service-details">Services</a></li>
+            <li><a href="/predictor">Predictor</a></li>
+            <li><a href="/portfolio-details" class="active">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="page-container">
+        <header class="page-header">
+            <h1>CONTACT US</h1>
+            <p>Get in touch with the PRINT HACK team for support, collaboration, or questions.</p>
+        </header>
+        
+        <!-- Team Contact Section - Full Width -->
+        <section class="content-box contact-card" style="width: 100%; margin-bottom: 40px;">
+            <h2>Team Members</h2>
+            <div class="horizontal-team-grid">
+                <div class="team-member-large">
+                    <h3>Naman Gauttam</h3>
+                    <p>3rd Year B.Tech Student in Computer Science (AI)</p>
+                    <p>College: ANAND INTERNATIONAL COLLEGE OF ENGINEERING, JAIPUR</p>
+                    <p>Skills: Python, C, C++</p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/naman-gautam-972932300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-btn" aria-label="Visit Naman Gauttam's LinkedIn Profile">LinkedIn Profile</a>
+                    </div>
+                </div>
+                
+                <div class="team-member-large">
+                    <h3>Kavya Sharma</h3>
+                    <p>3rd Year B.Tech Student in Computer Science (AI)</p>
+                    <p>College: ANAND INTERNATIONAL COLLEGE OF ENGINEERING, JAIPUR</p>
+                    <p>Skills: Python, C, C++</p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/kavya-sharma-a93282301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-btn" aria-label="Visit Kavya Sharma's LinkedIn Profile">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Project Information - Full Width -->
+        <section class="content-box project-info-card" style="width: 100%;">
+            <h2>Project Information</h2>
+            <div class="horizontal-info-grid">
+                <div class="info-item-large">
+                    <strong>Project Title:</strong>
+                    <p>3D Printer Material Prediction Using Machine Learning</p>
+                </div>
+                <div class="info-item-large">
+                    <strong>Internship at:</strong>
+                    <p>SmartBridge</p>
+                </div>
+                <div class="info-item-large">
+                    <strong>Institution:</strong>
+                    <p>Anand International College of Engineering, Jaipur</p>
+                </div>
+                <div class="info-item-large">
+                    <strong>Technology Stack:</strong>
+                    <p>Python, Flask, Machine Learning, HTML/CSS/JavaScript</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details - Fault Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #121212;
+            background-image: url("{{ url_for('static', filename='assets/bg.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #f1f1f1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: rgba(0, 0, 0, 0.85);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .navbar .logo {
+            color: #1a73e8;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background-color: #1a73e8;
+        }
+
+        .about-box {
+            max-width: 1100px;
+            margin: 80px auto 30px;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-box h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #1a73e8;
+        }
+
+        .project-section {
+            max-width: 1100px;
+            margin: 20px auto;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-section h2 {
+            color: #1a73e8;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .project-section p,
+        .project-section li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        code {
+            background-color: #1e1e1e;
+            padding: 2px 6px;
+            border-radius: 5px;
+            color: #fff176;
+        }
+
+        .team {
+            font-weight: bold;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">PRINT HACK</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/project-details">About</a></li>
+            <li><a href="/service-details">Services</a></li>
+            <li><a class="active" href="/predictor">Predictor</a></li>
+            <li><a href="/portfolio-details">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Video Section at the top --> 
+    <div class="content-box video-section" style="margin: 20px auto; max-width: 1200px;"> 
+        <video width="640" height="360" controls autoplay muted style="display: block; margin: 0 auto; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 221, 235, 0.4);"> 
+            <source src="{{ url_for('static', filename='3D-Model-Fault-Prediction-Using-Machine-Learning-video.mp4') }}" type="video/mp4"> Your browser does not support the video tag. 
+        </video> 
+    </div>
+    <!-- About Us Top Box -->
+    <div class="about-box">
+        <h1>📄 Project Title: Fault Detection by Coordinates in 3D Model</h1>
+        <p>This project detects faults in 3D models using coordinates extracted from STL files and vibration sensor data. It utilizes supervised ML models to predict faults at specific points. Built with Python, Flask, and machine learning techniques, it enables users to upload 3D files and view predictions instantly.</p>
+    </div>
+
+    <!-- Each Section Below -->
+    <div class="project-section">
+        <h2>1. Introduction</h2>
+        <p>This project aims to automatically detect faults in 3D models by analyzing vibration sensor data and coordinate data extracted from .stl files...</p>
+    </div>
+
+    <div class="project-section">
+        <h2>2. Dataset</h2>
+        <p>The dataset (<code>ADXL345_SensorData.csv</code>) contains:</p>
+        <ul>
+            <li><b>X-direction:</b> X-axis coordinate/vibration</li>
+            <li><b>Y-direction:</b> Y-axis coordinate/vibration</li>
+            <li><b>Z-direction:</b> Z-axis coordinate/vibration</li>
+            <li><b>Error_found:</b> Indicates if a fault is present (0 = No fault, 1 = Fault)</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>3. Libraries and Technologies Used</h2>
+        <ul>
+            <li><b>Data:</b> pandas, numpy</li>
+            <li><b>Visualization:</b> matplotlib, seaborn</li>
+            <li><b>Modeling:</b> scikit-learn, XGBoost, imblearn (ADASYN)</li>
+            <li><b>Web App:</b> Flask, HTML</li>
+            <li><b>File Handling:</b> numpy-stl, pickle</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>4. Data Preprocessing</h2>
+        <ul>
+            <li>Handled missing values and outliers</li>
+            <li>Used percentile method for outlier treatment</li>
+            <li>Balanced dataset using ADASYN</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>5. Exploratory Data Analysis</h2>
+        <ul>
+            <li>KDE plots for X, Y, Z</li>
+            <li>Scatter plots, violin plots, heatmaps</li>
+            <li>Boxplots before/after outlier treatment</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>6. Model Training and Selection</h2>
+        <ul>
+            <li>Trained Logistic Regression, Random Forest, XGBoost, Naive Bayes, KNN, SVC</li>
+            <li>Used GridSearchCV for hyperparameter tuning</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>7. Model Evaluation</h2>
+        <ul>
+            <li>Evaluated using Accuracy, F1 Score, ROC AUC, Classification Report</li>
+            <li>Selected best model and saved as <code>model.pkl</code></li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>8. Backend Deployment</h2>
+        <ul>
+            <li>Homepage and navigation pages</li>
+            <li>/predictor - Upload form</li>
+            <li>/predict - Reads STL, predicts, returns results</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>9. STL File Handling</h2>
+        <ul>
+            <li>STL uploaded → coordinates extracted via numpy-stl</li>
+            <li>Predictions made using saved model</li>
+            <li>Uploaded files auto-deleted post-prediction</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>10. Result</h2>
+        <p>Each 3D coordinate is labeled with:</p>
+        <ul>
+            <li><b>Fault Detected</b> if error predicted</li>
+            <li><b>No Fault</b> otherwise</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>11. Future Improvements</h2>
+        <ul>
+            <li>More real-world data</li>
+            <li>3D visualization of faulty points</li>
+            <li>User login system</li>
+            <li>Cloud deployment (AWS, Render, etc.)</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>✅ Conclusion</h2>
+        <p>This end-to-end project demonstrates real-time fault detection using vibration data and machine learning, integrated with a web-based UI to facilitate STL upload and feedback.</p>
+    </div>
+
+    <div class="project-section team">
+        <h2>Attachments</h2>
+        <ul>
+            <li><code>app.py</code>: Flask backend</li>
+            <li><code>test.py</code>: Prediction script</li>
+            <li><code>model.pkl</code>: Trained model</li>
+            <li>HTML templates</li>
+        </ul>
+        <p>Submitted By:</p>
+        <ul>
+            <li>Naman Gautam </li>
+            <li>Kavya Sharma </li>
+            
+            <li>ANAND INTERNATIONAL COLLEGE OF ENGINEERING, JAIPUR</li>
+        </ul>
+    </div>
+</body>
+</html>
