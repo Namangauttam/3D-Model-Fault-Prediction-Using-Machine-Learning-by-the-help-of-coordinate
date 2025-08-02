@@ -1,7 +1,7 @@
 # 3D Model Fault Prediction Using Machine Learning by the Help of Coordinates
 
-![Project Banner](static/assets/1.jpg)
-
+![Project Banner](static/assets/home page.PNG)
+![Project Banner](static/assets/result.png)
 ## 📌 Project Overview
 
 This project predicts **faults in a 3D model** using sensor data and coordinates with the help of **Machine Learning**. It combines a Jupyter Notebook for data processing, a Python backend (`app.py`), HTML templates for the user interface, and static assets like images, CSS, and video demos.
